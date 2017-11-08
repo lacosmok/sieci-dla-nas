@@ -1,0 +1,5 @@
+Django==1.11.3
+djangorestframework==3.6.3
+pytz==2017.2
+django-rest-swagger==2.1.2
+
