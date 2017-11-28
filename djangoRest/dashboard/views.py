@@ -8,14 +8,28 @@ from .serializers import CommentSerializer, NodeSerializer, NetworkSerializer
 
 # Create your views here.
 class ArticleView(views.APIView):
-    def get(self, article_id):
+    def get(self, request, article_id):
         comments = Comment.objects.filter(article_id)
         comments_serializer = CommentSerializer(comments, many=True)
         return Response(data=comments_serializer.data)
 
 
 class GetNetworks(views.APIView):
-    def get(self):
+    def get(self, request):
         networks = Network.objects.all()
-        network_serializer = NetworkSerializer(networks)
-        return Response(data=network_serializer.data)
+        network_serializer = NetworkSerializer(networks, many=True)
+        return Response(data={'networks': network_serializer.data})
+
+
+class DeleteNetwork(views.APIView):
+    def post(self, request):
+        pk = request.data.get('pk')
+        network = Network.objects.get(pk=pk)
+        network.delete()
+        return Response(status=201)
+
+
+class AddNetwork(views.APIView):
+    def post(self, request, **kwargs):
+        Network.objects.create(name=request.data.get('name'))
+        return Response(status=201)
