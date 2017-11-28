@@ -5,4 +5,5 @@ djangoRest/djangoRest/__pycache__/**
 djangoRest/dashboard/__pycache__/**
 djangoRest/tutorial/__pycache__/**
 djangoRest/login/__pycache__/**
-db.sqlite3
+djangoRest/db.sqlite3
+.idea/workspace.xml
