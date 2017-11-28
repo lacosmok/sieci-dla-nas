@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Subscription} from "rxjs/Subscription";
+import {RestService} from "../../rest.service";
 
 @Component({
   selector: 'app-user',
@@ -6,7 +8,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  networkSubs: Subscription
+  networks = [];
   baner: string;
   name: string;
   age: number;
@@ -14,12 +17,20 @@ export class UserComponent implements OnInit {
   address: Address;
   siecies: string[];
 
-  constructor() {
+  constructor(public restService: RestService) {
     console.log('constructor ran...');
   }
 
   ngOnInit() {
+    this.restService.getDashboardData();
+    this.networkSubs = this.restService.networksChanged
+      .subscribe(
+        (networks) => {
+          this.networks = networks['networks'];
+          console.log(networks);
+        });
     console.log('ngOnInit ran...');
+
 
     this.baner = 'Sieci dla nas, Witaj na stronie glownej';
     this.name = 'named by ngOniit';
@@ -39,6 +50,15 @@ export class UserComponent implements OnInit {
       'siec7ex',
       'siec8ex',
     ];
+  }
+
+  deleteNetwork(pk) {
+    const link = '/network/delete';
+    this.restService.sendData( {'pk': pk}, link);
+  }
+  addNetwork(name) {
+    const link = '/network/add';
+    this.restService.sendData( {'name': name.value}, link);
   }
 
   onClick() {

@@ -1,5 +1,5 @@
-.idea+
-.idea/**
+**/.idea+
+**/.idea/**
 djangoRest/.idea/**
 djangoRest/djangoRest/__pycache__/**
 djangoRest/dashboard/__pycache__/**
