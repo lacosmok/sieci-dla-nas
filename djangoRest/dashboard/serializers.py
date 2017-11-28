@@ -16,8 +16,8 @@ class NodeSerializer(serializers.ModelSerializer):
 
 
 class NetworkSerializer(serializers.ModelSerializer):
-    nodes = NodeSerializer(many=True)
+    # nodes = NodeSerializer(many=True)
 
     class Meta:
         model = models.Network
-        fields = ('name', 'nodes')
+        fields = ('name', 'pk')

@@ -1,6 +1,5 @@
 **/.idea+
 **/.idea/**
-.idea/workspace.xml
 djangoRest/.idea/**
 djangoRest/djangoRest/__pycache__/**
 djangoRest/dashboard/__pycache__/**
