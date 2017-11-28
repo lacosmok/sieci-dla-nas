@@ -1,2 +1,7 @@
 .idea+
 .idea/**
+djangoRest/.idea/**
+djangoRest/djangoRest/__pycache__/**
+djangoRest/dashboard/__pycache__/**
+djangoRest/tutorial/__pycache__/**
+djangoRest/login/__pycache__/**
