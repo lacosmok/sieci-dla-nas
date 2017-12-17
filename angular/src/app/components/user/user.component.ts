@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Subscription} from "rxjs/Subscription";
-import {RestService} from "../../rest.service";
+import {Subscription} from 'rxjs/Subscription';
+import {RestService} from '../../rest.service';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +8,7 @@ import {RestService} from "../../rest.service";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  networkSubs: Subscription
+  networkSubs: Subscription;
   networks = [];
   baner: string;
   name: string;
@@ -16,9 +16,20 @@ export class UserComponent implements OnInit {
   email: string;
   address: Address;
   siecies: string[];
+  allowNewServer = false;
+  serverCreationStatus = 'No server was createrd';
+  time: Date = new Date();
+  serverName = 'Default server name [two way data binding]';
+  showSecret: boolean;
 
   constructor(public restService: RestService) {
     console.log('constructor ran...');
+    setInterval(() => {
+      this.time = new Date();
+      }, 1);
+    setTimeout(() => {
+      this.allowNewServer = true;
+    }, 2000);
   }
 
   ngOnInit() {
@@ -80,7 +91,17 @@ export class UserComponent implements OnInit {
       }
     }
   }
+
+  onCreateServer() {
+    this.serverCreationStatus = 'Server was created';
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
 }
+
+
 
 
 interface Address {

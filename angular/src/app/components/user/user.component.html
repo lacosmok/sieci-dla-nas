@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <title>Sieci dla nas</title>
   <meta charset="utf-8">
@@ -9,47 +10,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
         integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">SDN...</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Account</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          Networks
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" *ngFor='let network of siecies'>Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Sign out</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-primary" (click)="onClick()">Log in</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+
 <div class="container">
+  
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -71,16 +36,41 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  
   <div class="jumbotron">
     <h1 class="display-3">{{baner}}</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-      featured content or information.</p>
+    <p class="lead">Tekst opisowy dla strony głownej.</p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>Najnowszy | Topowy artykuł</p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Czytaj więcej | Dla danego artykułu</a>
     </p>
+    
+    <button class="btn btn-primary" [disabled]="!allowNewServer" (click) = "onCreateServer()">Add server</button>
+    <p>{{ serverCreationStatus }}</p>
+    <p>Time now is: {{time}}</p>
+    <p [innerText]="time"></p>
+    <hr>
+    
+    <label>Server name</label>
+    <input
+      type="text"
+      class="form-control"
+      (input)="onUpdateServerName($event)">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="serverName">
+    <p>{{serverName}}</p>
+    <p *ngIf=""></p>
+    
+    <hr>
+    
+    <button class="btn btn-primary" (click)="showSecret = !showSecret">Display details</button>
+    <p *ngIf="showSecret">Secret Password = tina</p>
+    
   </div>
+  
   <div class="row" *ngFor="let net of networks">
     <div class="col-sm-2">{{ net.pk}}</div>
     <div class="col-sm-6">{{ net.name}}</div>
@@ -88,6 +78,7 @@
       <button class="btn btn-danger" (click)="deleteNetwork(net.pk)">delete</button>
     </div>
   </div>
+  
   <hr>
   <div class="row">
     <div class="col-sm-12">Add Network</div>
@@ -95,6 +86,7 @@
     <input id="name" type="text" class="form-control" #name>
     <button class="btn" (click)="addNetwork(name)">Add</button>
   </div>
+  
 </div>
 </body>
 </html>
