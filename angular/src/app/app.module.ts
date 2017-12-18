@@ -9,10 +9,10 @@ import { RestService } from './rest.service';
 import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './header/header.component';
 import { NetworksComponent } from './networks/networks.component';
-import { Network } from './networks/network.list/network.list.component';
 import { NetworkListComponent } from './networks/network-list/network-list.component';
-import { NetworkItemComponent } from './network-list/network-item/network-item.component';
+import { NetworkItemComponent } from './networks/network-list/network-item/network-item.component';
 import { NetworkDetailsComponent } from './networks/network-details/network-details.component';
+import {AlertModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,6 @@ import { NetworkDetailsComponent } from './networks/network-details/network-deta
     UserComponent,
     HeaderComponent,
     NetworksComponent,
-    Network.ListComponent,
     NetworkListComponent,
     NetworkItemComponent,
     NetworkDetailsComponent
@@ -28,7 +27,8 @@ import { NetworkDetailsComponent } from './networks/network-details/network-deta
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AlertModule.forRoot()
   ],
   providers: [RestService],
   bootstrap: [AppComponent]

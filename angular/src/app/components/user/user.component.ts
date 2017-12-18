@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {RestService} from '../../rest.service';
+import {Network} from '../../networks/network.model';
 
 @Component({
   selector: 'app-user',
@@ -21,6 +22,12 @@ export class UserComponent implements OnInit {
   time: Date = new Date();
   serverName = 'Default server name [two way data binding]';
   showSecret: boolean;
+  images: string[] = [
+    'http://maxpixel.freegreatpicture.com/static/photo/1x/Neural-Network-Neural-Network-Science-Neuron-1487112.jpg'
+  ];
+  netwrks: Network[] = [
+    new Network('First network name', 'First network description')
+  ];
 
   constructor(public restService: RestService) {
     console.log('constructor ran...');
@@ -43,7 +50,7 @@ export class UserComponent implements OnInit {
     console.log('ngOnInit ran...');
 
 
-    this.baner = 'Sieci dla nas, Witaj na stronie glownej';
+    this.baner = 'Sieci dla nas.';
     this.name = 'named by ngOniit';
     this.age = 30;
     this.address = {

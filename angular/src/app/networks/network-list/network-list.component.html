@@ -1,3 +1,15 @@
-<p>
-  network-list works!
-</p>
+<div class="row">
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <a href="#"
+       class="list-group-item clearfix"
+       *ngFor="let network of networks">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ network.name }}</h4>
+        <p class="list-group-item-text">{{ network.description }}</p>
+      </div>
+    </a>
+  </div>
+</div>
