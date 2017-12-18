@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Subscription} from "rxjs/Subscription";
-import {RestService} from "../../rest.service";
+import {Subscription} from 'rxjs/Subscription';
+import {RestService} from '../../rest.service';
+import {Network} from '../../networks/network.model';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +9,7 @@ import {RestService} from "../../rest.service";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  networkSubs: Subscription
+  networkSubs: Subscription;
   networks = [];
   baner: string;
   name: string;
@@ -16,9 +17,26 @@ export class UserComponent implements OnInit {
   email: string;
   address: Address;
   siecies: string[];
+  allowNewServer = false;
+  serverCreationStatus = 'No server was createrd';
+  time: Date = new Date();
+  serverName = 'Default server name [two way data binding]';
+  showSecret: boolean;
+  images: string[] = [
+    'http://maxpixel.freegreatpicture.com/static/photo/1x/Neural-Network-Neural-Network-Science-Neuron-1487112.jpg'
+  ];
+  netwrks: Network[] = [
+    new Network('First network name', 'First network description')
+  ];
 
   constructor(public restService: RestService) {
     console.log('constructor ran...');
+    setInterval(() => {
+      this.time = new Date();
+      }, 1);
+    setTimeout(() => {
+      this.allowNewServer = true;
+    }, 2000);
   }
 
   ngOnInit() {
@@ -32,7 +50,7 @@ export class UserComponent implements OnInit {
     console.log('ngOnInit ran...');
 
 
-    this.baner = 'Sieci dla nas, Witaj na stronie glownej';
+    this.baner = 'Sieci dla nas.';
     this.name = 'named by ngOniit';
     this.age = 30;
     this.address = {
@@ -80,7 +98,17 @@ export class UserComponent implements OnInit {
       }
     }
   }
+
+  onCreateServer() {
+    this.serverCreationStatus = 'Server was created';
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
 }
+
+
 
 
 interface Address {

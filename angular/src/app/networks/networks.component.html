@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="jumbotron">
+  <h2>Sieci</h2>
+  <div class="row">
+    <div class="col-md-8">
+      <app-network-list></app-network-list>
+    </div>
+    <div class="col-md-4">
+      <app-network-details></app-network-details>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-lg" (click)="showSecret = !showSecret">Dodaj nową sieć</button>
+    <p *ngIf="showSecret">
+        <span class="label label-info">Nazwa sieci</span>
+        <input
+          type="text"
+          id="inputNetworkName"
+          class="form-control"
+          placeholder="np. Najlepsza sieć ever"
+          (input)="onUpdateServerName($event)">
+      <span class="label label-info">Opis</span>
+        <input
+          type="text"
+          id="inputNetworkDescription"
+          class="form-control"
+          placeholder="np. Dlatego że..."
+          (input)="onUpdateServerName($event)">
+      <button class="btn btn-success" [disabled]="!allowNewServer" (click) = "onCreateServer()">Zatwierdź</button>
+    </p>
+    
+    <hr>
+    </div>
+</div>
