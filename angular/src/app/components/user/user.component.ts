@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {RestService} from '../../rest.service';
 import {Network} from '../../networks/network.model';
+import {ControlContainer} from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -15,7 +16,7 @@ export class UserComponent implements OnInit {
   name: string;
   age: number;
   email: string;
-  address: Address;
+
   siecies: string[];
   allowNewServer = false;
   serverCreationStatus = 'No server was createrd';
@@ -30,6 +31,7 @@ export class UserComponent implements OnInit {
   netwrks: Network[] = [
     new Network('First network name', 'First network description')
   ];
+  tempDatas: string[];
 
   constructor(public restService: RestService) {
     console.log('constructor ran...');
@@ -55,11 +57,6 @@ export class UserComponent implements OnInit {
     this.baner = 'Sieci dla nas.';
     this.name = 'named by ngOniit';
     this.age = 30;
-    this.address = {
-      street: 'testStreet',
-      city: 'testCity',
-      country: 'testCountry'
-    };
     this.siecies = [
       'siec1ex',
       'siec2ex',
@@ -111,10 +108,3 @@ export class UserComponent implements OnInit {
 }
 
 
-
-
-interface Address {
-  street: string;
-  city: string;
-  country: string;
-}

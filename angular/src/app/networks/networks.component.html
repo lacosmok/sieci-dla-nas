@@ -14,18 +14,19 @@
         <span class="label label-info">Nazwa sieci</span>
         <input
           type="text"
+          required
           id="inputNetworkName"
           class="form-control"
           placeholder="np. Najlepsza sieć ever"
-          (input)="onUpdateServerName($event)">
+          (input)="onUpdateNetworkName($event)">
       <span class="label label-info">Opis</span>
         <input
           type="text"
           id="inputNetworkDescription"
           class="form-control"
           placeholder="np. Dlatego że..."
-          (input)="onUpdateServerName($event)">
-      <button class="btn btn-success" [disabled]="!allowNewServer" (click) = "onCreateServer()">Zatwierdź</button>
+          (input)="onUpdateNetworkDescription($event)">
+      <button class="btn btn-success" [disabled]="!validateName || !validateDescr" (click) = "onUpdateNewNetworkButton()">Zatwierdź</button>
     </p>
     
     <hr>
