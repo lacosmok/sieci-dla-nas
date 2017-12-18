@@ -23,7 +23,9 @@ export class UserComponent implements OnInit {
   serverName = 'Default server name [two way data binding]';
   showSecret: boolean;
   images: string[] = [
-    'http://maxpixel.freegreatpicture.com/static/photo/1x/Neural-Network-Neural-Network-Science-Neuron-1487112.jpg'
+    'http://maxpixel.freegreatpicture.com/static/photo/1x/Neural-Network-Neural-Network-Science-Neuron-1487112.jpg',
+    'http://www.publicdomainpictures.net/pictures/10000/velka/neural-networks-277512834557004puG.jpg',
+    'http://internet.uniroma2.it/en/wp-content/uploads/sites/2/2016/02/mining1.jpg'
   ];
   netwrks: Network[] = [
     new Network('First network name', 'First network description')

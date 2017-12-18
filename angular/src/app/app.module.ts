@@ -12,7 +12,8 @@ import { NetworksComponent } from './networks/networks.component';
 import { NetworkListComponent } from './networks/network-list/network-list.component';
 import { NetworkItemComponent } from './networks/network-list/network-item/network-item.component';
 import { NetworkDetailsComponent } from './networks/network-details/network-details.component';
-import {AlertModule} from 'ngx-bootstrap';
+import {AlertModule, CarouselModule} from 'ngx-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {AlertModule} from 'ngx-bootstrap';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    CarouselModule
   ],
   providers: [RestService],
   bootstrap: [AppComponent]
