@@ -1,8 +1,13 @@
 <ng-template [ngIf]="networksGenerated">
-  <div class="row" *ngFor="let network of networks">
-  <div class="col-sm-3">Input: {{network['matrixX']}}</div>
-  <div class="col-sm-6">Output: {{network.result}}</div>
-  <div class="col-sm-3">Number of Iterations{{network.runtime}}</div>
+  <div class="row content">
+    <div class="col-sm-3 data">Wejście</div>
+    <div class="col-sm-6 data">Wyjście</div>
+    <div class="col-sm-3 data">Ilość iteracji</div>
+  </div>
+  <div class="row content" *ngFor="let network of networks">
+  <div class="col-sm-3 data"> {{network['matrixX']}}</div>
+  <div class="col-sm-6 data"> {{network.result}}</div>
+  <div class="col-sm-3 data"> {{network.runtime}}</div>
 
   </div>
 </ng-template>
