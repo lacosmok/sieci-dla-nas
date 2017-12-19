@@ -7,4 +7,8 @@ a{
 button{
   margin-left: 5px;
   height: 25px;
+  padding-bottom: 24px;
+}
+.left {
+  float: left;
 }

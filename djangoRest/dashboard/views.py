@@ -3,7 +3,7 @@ from rest_framework import viewsets, views, generics, status
 from rest_framework.mixins import DestroyModelMixin
 from rest_framework.response import Response
 from .models import Comment, Network
-from .serializers import CommentSerializer, NodeSerializer, NetworkSerializer
+from .serializers import CommentSerializer, NetworkSerializer
 
 
 # Create your views here.
@@ -28,8 +28,3 @@ class DeleteNetwork(views.APIView):
         network.delete()
         return Response(status=201)
 
-
-class AddNetwork(views.APIView):
-    def post(self, request, **kwargs):
-        Network.objects.create(name=request.data.get('name'))
-        return Response(status=201)

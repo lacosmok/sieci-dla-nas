@@ -10,14 +10,12 @@ class Comment(models.Model):
 
 class Network(models.Model):
     name = models.CharField(max_length=255, default="Network", null=False)
+    matrixX = models.CharField(max_length=255, default='[]')
+    result = models.CharField(max_length=255, default='[]')
+    runtime = models.IntegerField(default=10000)
 
     def __str__(self):
         return self.name
 
-
-class Node(models.Model):
-    network = models.ForeignKey(Network, null=True)
-    level = models.IntegerField(default=0)
-    data = models.IntegerField(default=0)
 
 

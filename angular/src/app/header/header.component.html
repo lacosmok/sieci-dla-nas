@@ -4,22 +4,22 @@
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <button class="btn btn-primary" (click)="onClick()">Konto</button>
+        <button class="btn btn-primary" disabled [routerLink]="['konto']">Konto</button>
       </li>
       <li class="nav-item active">
-        <button class="btn btn-success" (click)="onClick()">Rejestracja </button>
+        <button class="btn btn-primary" [routerLink]="['tutorial']">Tutorial</button>
       </li>
       <li class="nav-item active">
-        <button class="btn btn-success" (click)="onClick()">Logowanie </button>
+        <button class="btn btn-primary" [routerLink]="['historia']">Historia</button>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
-    </form>
   </div>
+      <div class="login left ">
+          <button class="btn btn-success" disabled (click)="onClick()">Rejestracja</button>
+          <button class="btn btn-success" disabled (click)="onClick()">Logowanie</button>
+    </div>
 </nav>

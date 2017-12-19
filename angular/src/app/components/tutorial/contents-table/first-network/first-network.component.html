@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="title">Mały wstęp:</h2>
+    Pierwsza sieć która będziemy badali będzie analizowała dane metodą wstecznej propagacji błędów.<br>
+    Jest to uczenie z nadzorem lub inaczej - z nauczycielem. <br><br>
+
+    Pierwszą czynnością w procesie uczenia jest przygotowanie dwóch ciągów danych: uczącego i weryfikującego. <br>
+    Ciąg uczący jest to zbiór takich danych, które w miarę dokładnie charakteryzują dany problem. <br>
+    Jednorazowa porcja danych nazywana jest wektorem uczącym. <br>
+  </div>
+  <div class="col-sm-12">
+    <table>
+      <tr>
+        <td></td>
+        <td>Input</td>
+        <td>Output</td>
+      </tr>
+      <tr>
+        <td>Example 1</td>
+        <td>0 0 1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Example 2</td>
+        <td>1 1 1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Example 3</td>
+        <td>1 0 1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Example 4</td>
+        <td>0 1 1</td>
+        <td>0</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>New Situation</td>
+        <td>1 0 0</td>
+        <td>?</td>
+      </tr>
+    </table>
+
+    W przypadku który będziemy rozpatrywali nasza sieć będzie dostawała wejście w postaci 3 liczb
+    0 lub 1 <br>
+    W tym przypadku wynikiem bedzie liczba która znajduje sie w pierwszej kolumnie po lewej stronie.<br>
+    I na podstawie wyników przebiegu sieć powinna być w stanie oszacowac jaki powinien zostać poprawny wynik.
+
+    <h2 class="title">Przyklad 1</h2>
+    <section class="example-1">
+      Sieć która tutaj działa bedzie działałą na podstawie danych które znajdują się powyżej i zostanie uruchomiona 10
+      000.
+
+      <button class="btn btn-primary" (click)="startExample1()">Start</button>
+      <div class="results" *ngIf="isExample1Finished">
+        <ul *ngFor="let result of example1Result">
+          <li>{{result}}</li>
+        </ul>
+      </div>
+    </section>
+    <section class="experiment">
+      <h2 class="title">Pora na Eksperymentowanie</h2>
+      Tutaj można poeksperymentowac z siecią.
+      Trzeba pamiętac o tym że dane powinny byc równe 1 lub 0. <br>
+      <input type="number" class="matrix" #x1>
+      <input type="number" class="matrix" #x2>
+      <input type="number" class="matrix" #x3><br>
+      <input type="number" class="matrix" #y1>
+      <input type="number" class="matrix" #y2>
+      <input type="number" class="matrix" #y3><br>
+      <input type="number" class="matrix" #z1>
+      <input type="number" class="matrix" #z2>
+      <input type="number" class="matrix" #z3><br>
+      <input type="number" class="matrix" #a1>
+      <input type="number" class="matrix" #a2>
+      <input type="number" class="matrix" #a3><br>
+      <br><br>
+      Wynik:
+      <input type="number" class="matrix" #res1>
+      <input type="number" class="matrix" #res2>
+      <input type="number" class="matrix" #res3>
+      <input type="number" class="matrix" #res4>
+      <button class="btn btn-primary"
+              (click)=" startExperiment(x1.value,x2.value,x3.value,
+              y1.value,y2.value,y3.value,
+              z1.value,z2.value,z3.value,
+              a1.value,a2.value,a3.value,
+              res1.value,res2.value,res3.value, res4.value)"
+      >Submit
+      </button>
+      <div class="results" *ngIf="isExperimentFinished">
+        <h4>Wyniki:</h4>
+        <ul *ngFor="let result of experimentResult">
+          <li>{{result}}</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>

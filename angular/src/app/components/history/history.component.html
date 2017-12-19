@@ -1,0 +1,8 @@
+<ng-template [ngIf]="networksGenerated">
+  <div class="row" *ngFor="let network of networks">
+  <div class="col-sm-3">Input: {{network['matrixX']}}</div>
+  <div class="col-sm-6">Output: {{network.result}}</div>
+  <div class="col-sm-3">Number of Iterations{{network.runtime}}</div>
+
+  </div>
+</ng-template>

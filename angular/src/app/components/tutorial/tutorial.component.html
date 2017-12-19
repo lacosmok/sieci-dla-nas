@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-2 table-of-content">
+    <app-contents-table (selectStep)="onStepSelect($event)"></app-contents-table>
+  </div>
+  <div class="col-sm-10 content">
+    <ng-template [ngIf]="step===0">
+      <app-beggining></app-beggining>
+    </ng-template>
+    <ng-template [ngIf]="step===1">
+      <app-introduction></app-introduction>
+    </ng-template>
+    <ng-template [ngIf]="step===2">
+      <app-first-network></app-first-network>
+    </ng-template>
+  </div>
+  <div class="col-sm-10 buttons" >
+    <div class="col-sm-push-4 col-sm-4" *ngIf="step !== 0">
+      <button class="btn btn-primary" (click)="onStepSelect(step - 1 )">Back</button>
+    </div>
+    <div class="col-sm-push-4 col-sm-4" *ngIf="step !== 2">
+      <button class="btn btn-primary" (click)="onStepSelect(step +1 )">Next</button>
+    </div>
+  </div>
+</div>

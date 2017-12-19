@@ -7,6 +7,7 @@ import {environment} from "../environments/environment";
 export class RestService {
   networks: {};
   networksChanged = new Subject<{}>();
+  networkData = new Subject<{}>();
 
   constructor(public http: Http) {
   }
@@ -30,6 +31,17 @@ export class RestService {
       .subscribe(
         (response: Response) => {
           this.getDashboardData();
+        });
+  }
+
+  sendNetwork(data, url: string) {
+    const link = 'http://' + environment.baseServer + url;
+    console.log("Send Data ", data, link);
+    this.http.post(link, data)
+      .subscribe(
+        (response: Response) => {
+          let result = response.json();
+          this.networkData.next(result)
         });
   }
 
